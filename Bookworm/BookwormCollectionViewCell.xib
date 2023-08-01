@@ -22,11 +22,11 @@
                         <rect key="frame" x="8" y="8" width="221" height="206"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qg8-2j-IDx">
-                                <rect key="frame" x="8" y="8" width="205" height="30"/>
+                                <rect key="frame" x="8" y="8" width="168" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CQL-cr-6Ks"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -43,10 +43,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5x-VT-owK">
+                                <rect key="frame" x="184" y="8" width="29" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemMintColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Qg8-2j-IDx" secondAttribute="trailing" constant="8" id="0TY-NQ-eAo"/>
+                            <constraint firstAttribute="trailing" secondItem="Qg8-2j-IDx" secondAttribute="trailing" constant="45" id="0TY-NQ-eAo"/>
+                            <constraint firstItem="C5x-VT-owK" firstAttribute="leading" secondItem="Qg8-2j-IDx" secondAttribute="trailing" constant="8" id="4JN-mV-LSu"/>
                             <constraint firstItem="XEH-5j-mbM" firstAttribute="leading" secondItem="a5G-SY-Uom" secondAttribute="leading" constant="20" id="5x0-A9-Vek"/>
                             <constraint firstAttribute="trailing" secondItem="Gdm-Dh-T9d" secondAttribute="trailing" constant="18" id="6hG-uX-xBT"/>
                             <constraint firstAttribute="bottom" secondItem="Gdm-Dh-T9d" secondAttribute="bottom" constant="8" id="Abf-Ru-Spn"/>
@@ -54,7 +60,10 @@
                             <constraint firstItem="Qg8-2j-IDx" firstAttribute="top" secondItem="a5G-SY-Uom" secondAttribute="top" constant="8" id="CNF-iq-Jei"/>
                             <constraint firstItem="Qg8-2j-IDx" firstAttribute="leading" secondItem="a5G-SY-Uom" secondAttribute="leading" constant="8" id="GtC-Ge-PUO"/>
                             <constraint firstItem="Gdm-Dh-T9d" firstAttribute="top" secondItem="Qg8-2j-IDx" secondAttribute="bottom" constant="20" id="QX5-Jy-nf3"/>
+                            <constraint firstItem="Gdm-Dh-T9d" firstAttribute="top" secondItem="C5x-VT-owK" secondAttribute="bottom" constant="20" id="Sa5-Ch-eXh"/>
+                            <constraint firstAttribute="trailing" secondItem="C5x-VT-owK" secondAttribute="trailing" constant="8" id="e5w-Z3-hDu"/>
                             <constraint firstItem="Gdm-Dh-T9d" firstAttribute="leading" secondItem="XEH-5j-mbM" secondAttribute="trailing" constant="8" id="ksx-x0-esT"/>
+                            <constraint firstItem="C5x-VT-owK" firstAttribute="top" secondItem="a5G-SY-Uom" secondAttribute="top" constant="8" id="soM-rj-8Kd"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -69,6 +78,7 @@
             <size key="customSize" width="237" height="222"/>
             <connections>
                 <outlet property="movieBackView" destination="a5G-SY-Uom" id="ikj-iM-SFB"/>
+                <outlet property="movieLikeButton" destination="C5x-VT-owK" id="FH1-sV-YeZ"/>
                 <outlet property="moviePosterImage" destination="Gdm-Dh-T9d" id="guu-6G-RKt"/>
                 <outlet property="movieRatings" destination="XEH-5j-mbM" id="qAE-08-awO"/>
                 <outlet property="movieTitleLabel" destination="Qg8-2j-IDx" id="xf4-e1-P5R"/>

@@ -10,10 +10,10 @@ import UIKit
 
 
 class BookwormCollectionViewController: UICollectionViewController {
-
+    
     
     var movieList = MovieInfo()
-
+    
     var colorList: [UIColor] = [.orange, .blue, .brown, .red, .green, .magenta, .systemBrown, .systemYellow, .systemIndigo, .purple, .systemMint, .quaternarySystemFill]
     
     
@@ -24,7 +24,7 @@ class BookwormCollectionViewController: UICollectionViewController {
         
         let nib = UINib(nibName: "BookwormCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "BookwormCollectionViewCell")
-    
+        
         SetCollectionViewlayOut()
         
     }
@@ -54,11 +54,13 @@ class BookwormCollectionViewController: UICollectionViewController {
         nav.modalPresentationStyle = .fullScreen
         
         present(nav, animated: true)
-
+        
         
         
         
     }
+    
+    
     // 셀 갯수
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movieList.movie.count
@@ -68,16 +70,33 @@ class BookwormCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookwormCollectionViewCell", for: indexPath) as! BookwormCollectionViewCell
         
-        let row = movieList.movie[indexPath.row]
-        cell.moviePosterImage.image = UIImage(named: row.title)
-        cell.movieTitleLabel.text = row.title
-        cell.movieRatings.text = "\(row.rate)"
+        
+//        cell.moviePosterImage.image = UIImage(named: row.title)
+//        cell.movieTitleLabel.text = row.title
+//        cell.movieRatings.text = "\(row.rate)"
         
         //cell.backgroundView?.layer.cornerRadius = 10
-        cell.movieBackView.layer.cornerRadius = 15
+//        cell.movieBackView.layer.cornerRadius = 15
+        
+        
+        let row = movieList.movie[indexPath.row]
+        cell.configureCell(row: row)
         cell.movieBackView.backgroundColor = colorList.shuffled()[indexPath.row]
         
+        
+        cell.movieLikeButton.tag = indexPath.row
+        cell.movieLikeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+        
+        
         return cell
+    }
+    
+    
+    @objc
+    func likeButtonTapped(_ sender: UIButton) {
+        print("clicked \(sender.tag)")
+        movieList.movie[sender.tag].like.toggle()
+        collectionView.reloadData()
     }
     
     //셀 선택
@@ -88,7 +107,17 @@ class BookwormCollectionViewController: UICollectionViewController {
         // 뷰컨트롤러 선택
         let vc = sb.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
-        vc.contents = movieList.movie[indexPath.row].title
+        let row = movieList.movie[indexPath.row]
+        
+        vc.movieTitle = row.title
+        vc.posterImage = row.title
+        vc.movieRuntime = row.runtime
+        vc.movieRatings = row.rate
+        vc.movieReleaseDate = row.releaseDate
+        vc.movieOverview = row.overview
+      
+     
+        
         
         navigationController?.pushViewController(vc, animated: true)
         
