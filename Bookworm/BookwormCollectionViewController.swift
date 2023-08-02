@@ -83,6 +83,7 @@ class BookwormCollectionViewController: UICollectionViewController {
         cell.configureCell(row: row)
         cell.movieBackView.backgroundColor = colorList.shuffled()[indexPath.row]
         
+        cell.movieBackView.backgroundColor = colorList.randomElement()
         
         cell.movieLikeButton.tag = indexPath.row
         cell.movieLikeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
@@ -109,12 +110,12 @@ class BookwormCollectionViewController: UICollectionViewController {
         
         let row = movieList.movie[indexPath.row]
         
-        vc.movieTitle = row.title
-        vc.posterImage = row.title
-        vc.movieRuntime = row.runtime
-        vc.movieRatings = row.rate
-        vc.movieReleaseDate = row.releaseDate
-        vc.movieOverview = row.overview
+//        vc.movieTitle = row.title
+//        vc.posterImage = row.title
+//        vc.movieRuntime = row.runtime
+//        vc.movieRatings = row.rate
+//        vc.movieReleaseDate = row.releaseDate
+//        vc.movieOverview = row.overview
       
      
         
