@@ -13,18 +13,22 @@ enum TransitionType {
 }
 
 class DetailViewController: UIViewController {
+ 
+    
     
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var movieInformationLabel: UILabel!
     @IBOutlet var posterImageView: UIImageView!
-    @IBOutlet var overviewLabel: UILabel!
+  
+  
+    
+    @IBOutlet var overviewTableView: UITableView!
+    
+    @IBOutlet var contentTextView: UITextView!
     
     
-    
-    
-    
-    
+    let placeholderText = "내용을 입력해주세요"
     
     //@IBAction처럼 함수 하나 만들기..!
     //이전 화면이 많은 정보를 갖고있기 때문에 새로운 화면에서는 "나 사라질게~"만 설정해주면 된다..!
@@ -41,11 +45,21 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        overviewTableView.delegate = self
+        overviewTableView.dataSource = self
+        
+        contentTextView.delegate = self
+        
+        contentTextView.text = placeholderText
+        contentTextView.textColor = .lightGray
+        
+        
         guard let data else { return }
         
+    
         titleLabel.text = data.title
         posterImageView.image = UIImage(named: data.title)
-        overviewLabel.text = data.overview
+        
         movieInformationLabel.text = "\(data.releaseDate) | \(data.runtime)분 | \(data.rate)점"
         
         //        if push == false {
@@ -81,4 +95,57 @@ class DetailViewController: UIViewController {
         //Present - Dismiss
         dismiss(animated: true)
     }
+
+    
+    
+}
+
+extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "overviewTableViewCell") as! overviewTableViewCell
+        
+        if let data {
+            cell.overviewLabel.text = data.overview
+        }
+        
+        
+        return cell
+    }
+    
+}
+
+
+extension DetailViewController: UITextViewDelegate {
+    
+    
+    func textViewDidChange(_ textView: UITextView) {
+        print(textView.text.count)
+        title = "\(textView.text.count)글자"
+    }
+   
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print(#function)
+        if textView.text == placeholderText {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+   
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print(#function)
+        if textView.text.isEmpty {
+            textView.text = placeholderText
+            textView.textColor = .lightGray
+        }
+    }
+    
 }

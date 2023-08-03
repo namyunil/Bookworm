@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F7B1C6C2A7C10FD000E0F60 /* overviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1C6B2A7C10FD000E0F60 /* overviewTableViewCell.swift */; };
 		9FA7AB232A77AC8F00F17A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB222A77AC8F00F17A0B /* AppDelegate.swift */; };
 		9FA7AB252A77AC8F00F17A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB242A77AC8F00F17A0B /* SceneDelegate.swift */; };
 		9FA7AB2A2A77AC8F00F17A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA7AB282A77AC8F00F17A0B /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F7B1C6B2A7C10FD000E0F60 /* overviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = overviewTableViewCell.swift; sourceTree = "<group>"; };
 		9FA7AB1F2A77AC8F00F17A0B /* Bookworm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookworm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA7AB222A77AC8F00F17A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FA7AB242A77AC8F00F17A0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				9FA7AB222A77AC8F00F17A0B /* AppDelegate.swift */,
 				9FA7AB242A77AC8F00F17A0B /* SceneDelegate.swift */,
 				9FA7AB282A77AC8F00F17A0B /* Main.storyboard */,
+				9F7B1C6B2A7C10FD000E0F60 /* overviewTableViewCell.swift */,
 				9FA7AB4E2A7A5A5A00F17A0B /* RecentlyViewCollectionViewCell.swift */,
 				9FA7AB502A7A5A7100F17A0B /* PopularMovieTableViewCell.swift */,
 				9FA7AB512A7A5A7100F17A0B /* PopularMovieTableViewCell.xib */,
@@ -179,6 +182,7 @@
 				9FA7AB3F2A77B0DB00F17A0B /* Movie.swift in Sources */,
 				9FA7AB412A77B98900F17A0B /* Exteison + CollectionViewController.swift in Sources */,
 				9FA7AB372A77AD8A00F17A0B /* BookwormCollectionViewController.swift in Sources */,
+				9F7B1C6C2A7C10FD000E0F60 /* overviewTableViewCell.swift in Sources */,
 				9FA7AB4D2A7A5A0C00F17A0B /* SearchGlassViewController.swift in Sources */,
 				9FA7AB392A77ADF400F17A0B /* MovieInfo.swift in Sources */,
 				9FA7AB3C2A77AE3100F17A0B /* BookwormCollectionViewCell.swift in Sources */,

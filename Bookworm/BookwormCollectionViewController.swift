@@ -14,8 +14,13 @@ class BookwormCollectionViewController: UICollectionViewController {
     
     var movieList = MovieInfo()
     
+    let searchBar = UISearchBar()
+    
+    //영화 제목 리스트 및 담을 리스트 만들기
     
     
+    var list: [Movie] = []
+
     
     
     override func viewDidLoad() {
@@ -26,6 +31,10 @@ class BookwormCollectionViewController: UICollectionViewController {
         
         SetCollectionViewlayOut()
         
+        searchBar.delegate = self
+        searchBar.placeholder = "검색어를 입력해주세요."
+        navigationItem.titleView = searchBar
+        searchBar.showsCancelButton = true
     }
     
     func SetCollectionViewlayOut() {
@@ -62,7 +71,8 @@ class BookwormCollectionViewController: UICollectionViewController {
     
     // 셀 갯수
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieList.movie.count
+//        return movieList.movie.count
+        return list.count
     }
     
     //셀 디자인
@@ -79,10 +89,9 @@ class BookwormCollectionViewController: UICollectionViewController {
         
         
         let row = movieList.movie[indexPath.row]
-        cell.configureCell(row: row)
-//        cell.movieBackView.backgroundColor = colorList.shuffled()[indexPath.row]
-//
-//        cell.movieBackView.backgroundColor = colorList.randomElement()
+        cell.configureCell(row: list[indexPath.row])
+        
+
         
         cell.movieLikeButton.tag = indexPath.row
         cell.movieLikeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
@@ -107,9 +116,10 @@ class BookwormCollectionViewController: UICollectionViewController {
         // 뷰컨트롤러 선택
         let vc = sb.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
-        let row = movieList.movie[indexPath.row]
+//        let row = movieList.movie[indexPath.row]
         
-        vc.data = row
+//        vc.data = row
+        vc.data = list[indexPath.row]
         vc.type = .push
         
         
@@ -126,4 +136,43 @@ class BookwormCollectionViewController: UICollectionViewController {
         navigationController?.pushViewController(vc, animated: true)
         
     }
+
+}
+
+
+extension BookwormCollectionViewController: UISearchBarDelegate {
+ 
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        for item in movieList.movie {
+            if item.title.contains(searchBar.text!) {
+                list.append(item)
+//                print(list)
+            }
+        }
+        
+        collectionView.reloadData()
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        list.removeAll()
+        searchBar.text = ""
+        collectionView.reloadData()
+    
+    }
+    //실시간 검색
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        for item in movieList.movie {
+            if item.title.contains(searchBar.text!) {
+                list.append(item)
+//                print(list)
+            }
+        }
+        
+        collectionView.reloadData()
+    
+    }
+    
 }

@@ -18,6 +18,7 @@ class BookwormCollectionViewCell: UICollectionViewCell {
     @IBOutlet var movieLikeButton: UIButton!
     
     
+    
     func configureCell(row: Movie) {
        
         movieBackView.backgroundColor = row.color
