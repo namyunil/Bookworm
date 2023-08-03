@@ -43,13 +43,11 @@ class DetailViewController: UIViewController {
         overviewLabel.text = data.overview
         movieInformationLabel.text = "\(data.releaseDate) | \(data.runtime)분 | \(data.rate)점"
         
-        
-        if false {
+        if push == false {
             let xMark = UIImage(systemName: "xmark")
-            
-            //navigationItem.leftBarButtonItem?.tintColor = .black // 생성 전에 할당하면 적용되지않는다..!
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: xMark, style: .plain, target: self, action: #selector(closeButtonClicked)) // #selector뒤엔 소괄호 없이 함수의 이름만 작성..!
-            navigationItem.leftBarButtonItem?.tintColor = .black // 제대로 적용된다. / 순서 잘 생각해봐..!
+           
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: xMark, style: .plain, target: self, action: #selector(closeButtonClicked))
+            navigationItem.leftBarButtonItem?.tintColor = .black
             
         } else {
             navigationItem.titleView?.isHidden = true

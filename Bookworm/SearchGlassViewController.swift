@@ -140,7 +140,7 @@ class SearchGlassViewController: UIViewController, UITableViewDelegate, UITableV
         present(nav, animated:  true)
 
         vc.data = movieList.movie[indexPath.item]
-
+        vc.push = false
     }
     
     
