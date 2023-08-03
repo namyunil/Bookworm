@@ -20,6 +20,7 @@ class BookwormCollectionViewCell: UICollectionViewCell {
     
     func configureCell(row: Movie) {
        
+        movieBackView.backgroundColor = row.color
         moviePosterImage.image = UIImage(named: row.title)
         movieTitleLabel.text = row.title
         movieRatings.text = "\(row.rate)"

@@ -5,7 +5,7 @@
 //  Created by NAM on 2023/07/31.
 //
 
-import Foundation
+import UIKit
 
 struct Movie {
     var title: String
@@ -14,4 +14,5 @@ struct Movie {
     var overview: String
     var rate: Double
     var like: Bool
+    var color: UIColor
 }

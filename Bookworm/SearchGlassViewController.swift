@@ -123,6 +123,7 @@ class SearchGlassViewController: UIViewController, UITableViewDelegate, UITableV
         
         //데이터 넘겨야함..!
         vc.data = movieList.movie[indexPath.row]
+        vc.push = false
     }
     
     

@@ -14,7 +14,6 @@ class BookwormCollectionViewController: UICollectionViewController {
     
     var movieList = MovieInfo()
     
-    var colorList: [UIColor] = [.orange, .blue, .brown, .red, .green, .magenta, .systemBrown, .systemYellow, .systemIndigo, .purple, .systemMint, .quaternarySystemFill]
     
     
     
@@ -81,9 +80,9 @@ class BookwormCollectionViewController: UICollectionViewController {
         
         let row = movieList.movie[indexPath.row]
         cell.configureCell(row: row)
-        cell.movieBackView.backgroundColor = colorList.shuffled()[indexPath.row]
-        
-        cell.movieBackView.backgroundColor = colorList.randomElement()
+//        cell.movieBackView.backgroundColor = colorList.shuffled()[indexPath.row]
+//
+//        cell.movieBackView.backgroundColor = colorList.randomElement()
         
         cell.movieLikeButton.tag = indexPath.row
         cell.movieLikeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
@@ -109,6 +108,10 @@ class BookwormCollectionViewController: UICollectionViewController {
         let vc = sb.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
         let row = movieList.movie[indexPath.row]
+        
+        vc.data = row
+        vc.push = true
+        
         
 //        vc.movieTitle = row.title
 //        vc.posterImage = row.title
