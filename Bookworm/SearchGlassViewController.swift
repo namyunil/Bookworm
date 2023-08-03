@@ -99,13 +99,15 @@ class SearchGlassViewController: UIViewController, UITableViewDelegate, UITableV
     //** 궁금증
     //컬렉션 뷰 헤더 위치에 글자를 쓸 수 없을까?
     //테이블 뷰 섹션의 이름을 이용하지 않고 레이블을 사용하는 방법이 있을까?
-    
+    //-> 테이블 뷰 헤더에 뷰( 컬렉션 뷰 + 레이블 )을 활용하여 구현해보자..!
     
     
     //컬렉션 뷰 이미지로 할까? 버튼으로 구현할까?
     //이미지 크기가 큰 상황..!
     //버튼으로 구현 시 이미지 크기 조절이 쉽지않았음. 크게 나오는 경우가 많아 이미지뷰로 넣어 셀 선택시 상세화면으로 이동하도록 구현하자..!
-    
+    //Button content mode
+    //버튼은 애니메이션 효과를 줄 때 보다 이미지뷰보다 간편하게 활용할 수 있다.
+    //하지만 내부에 버튼을 구현하면 IBAction을 활용할 수 없어 addTarget과 함수를 활용하여 구현해야하는 점..!
     
     
     
@@ -123,7 +125,7 @@ class SearchGlassViewController: UIViewController, UITableViewDelegate, UITableV
         
         //데이터 넘겨야함..!
         vc.data = movieList.movie[indexPath.row]
-        vc.push = false
+        vc.type = .present
     }
     
     
@@ -140,7 +142,7 @@ class SearchGlassViewController: UIViewController, UITableViewDelegate, UITableV
         present(nav, animated:  true)
 
         vc.data = movieList.movie[indexPath.item]
-        vc.push = false
+        vc.type = .present
     }
     
     

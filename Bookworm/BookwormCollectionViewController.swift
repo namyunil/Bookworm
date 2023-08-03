@@ -74,8 +74,8 @@ class BookwormCollectionViewController: UICollectionViewController {
 //        cell.movieTitleLabel.text = row.title
 //        cell.movieRatings.text = "\(row.rate)"
         
-        //cell.backgroundView?.layer.cornerRadius = 10
-//        cell.movieBackView.layer.cornerRadius = 15
+        //cell.backgroundView?.layer.cornerRadius = 10// 이 코드로하면 cornerRadius 적용 X
+//        cell.movieBackView.layer.cornerRadius = 15 // 두 코드의 차이점에 대해 생각해보자..!
         
         
         let row = movieList.movie[indexPath.row]
@@ -110,7 +110,7 @@ class BookwormCollectionViewController: UICollectionViewController {
         let row = movieList.movie[indexPath.row]
         
         vc.data = row
-        vc.push = true
+        vc.type = .push
         
         
 //        vc.movieTitle = row.title
