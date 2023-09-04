@@ -9,9 +9,11 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import Kingfisher
+import RealmSwift
+
 
 struct Book {
-    //    var authors: [String]
+    var authors: [String]
     let title: String
     let publisher: String
     let content: String
@@ -19,9 +21,16 @@ struct Book {
     let date: String
     let price: Int
     
+    let format = {
+        let format = DateFormatter()
+        format.dateFormat = "yy년 MM월 dd일"
+        return format
+    }()
+    
     var info: String {
         
-        return "저자:  | 출판사: \(publisher) | 발매일: \(date)"
+            return "저자: \(authors[0]) | 출판사: \(publisher) | 발매일: \(date)"
+        
     }
 }
 
@@ -51,10 +60,11 @@ struct Book {
 
 class BookWormAssignmentViewController: UIViewController {
     
-  
+    
     @IBOutlet var bookWormTableView: UITableView!
     @IBOutlet var bookSearchBar: UISearchBar!
 
+    var authorList: [String] = []
     var bookList: [Book] = []
     var page = 1
     
@@ -69,10 +79,14 @@ class BookWormAssignmentViewController: UIViewController {
         
         bookWormTableView.rowHeight = 150
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(chevronButtonClicked))
         
         
     }
     
+    @objc func chevronButtonClicked() {
+        dismiss(animated: true)
+    }
     
     func callRequest(query: String, page: Int) {
         
@@ -90,14 +104,22 @@ class BookWormAssignmentViewController: UIViewController {
                 
                 for item in json["documents"].arrayValue {
                     
-                    //저자가 문자열 배열로 되어있을 경우엔 어떻게 활용해야할까?
-                    //dateformatter()를 활용하여 발매일을 표현해보자
+                    //1. 저자가 문자열 배열로 되어있을 경우에 모든 배열의 값을 넣기위해선 어떻게 해야할까?
+                    // for num in 0...autohrs.count - 1 {
+                    //      let a = ""
+                    //      a = a + \(authors[num])
                     
-                    //                    var authors = item["authors"].arrayValue
-                    //                    for author in authors {
-                    //                        authors.append(author)
-                    //                    }
+                    //1-1.array.join
+                    //1-2.반복문..!
                     
+                    
+                    //2. dateformatter()를 활용하여 발매일을 표현해보자
+               
+                    self.authorList = []
+                    let author = item["authors"].arrayValue
+                    for item in author {
+                        self.authorList.append(item.stringValue)
+                    }
                     let title = item["title"].stringValue
                     let publisher = item["publisher"].stringValue
                     let content = item["contents"].stringValue
@@ -105,7 +127,7 @@ class BookWormAssignmentViewController: UIViewController {
                     let date = item["datetime"].stringValue
                     let price = item["price"].intValue
                     
-                    let data = Book(title: title, publisher: publisher, content: content, image: image, date: date, price: price)
+                    let data = Book(authors: self.authorList, title: title, publisher: publisher, content: content, image: image, date: date, price: price)
                     
                     self.bookList.append(data)
                     print("===")
@@ -144,6 +166,23 @@ extension BookWormAssignmentViewController: UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let row = bookList[indexPath.row]
+        
+        let realm = try! Realm()
+        
+        let task = BookWormTable(author: row.authors[0], title: row.title, publisher: row.publisher, price: row.price, image: row.image)
+        
+        try! realm.write {
+            realm.add(task)
+            print("Realm Add Succeed")
+        }
+        
+        dismiss(animated: true)
+        
+    }
+    
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         //배열의 형태이기때문에..!
         for indexPath in indexPaths {
@@ -155,6 +194,8 @@ extension BookWormAssignmentViewController: UITableViewDelegate, UITableViewData
         }
         
     }
+    
+    
 }
 
 extension BookWormAssignmentViewController: UISearchBarDelegate {

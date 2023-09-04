@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F4A696C2AA5FBC800D8ED20 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A696B2AA5FBC800D8ED20 /* RealmModel.swift */; };
+		9F4A696F2AA5FC1200D8ED20 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9F4A696E2AA5FC1200D8ED20 /* Realm */; };
+		9F4A69712AA5FC1200D8ED20 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9F4A69702AA5FC1200D8ED20 /* RealmSwift */; };
 		9F7B1C6C2A7C10FD000E0F60 /* overviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1C6B2A7C10FD000E0F60 /* overviewTableViewCell.swift */; };
 		9F7FC1E22A83F4B800C99092 /* Assignment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F7FC1E12A83F4B800C99092 /* Assignment.storyboard */; };
 		9F7FC1E42A83F4D500C99092 /* BookWormAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7FC1E32A83F4D500C99092 /* BookWormAssignmentViewController.swift */; };
@@ -26,7 +29,6 @@
 		9FA7AB3C2A77AE3100F17A0B /* BookwormCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB3A2A77AE3100F17A0B /* BookwormCollectionViewCell.swift */; };
 		9FA7AB3D2A77AE3100F17A0B /* BookwormCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA7AB3B2A77AE3100F17A0B /* BookwormCollectionViewCell.xib */; };
 		9FA7AB3F2A77B0DB00F17A0B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB3E2A77B0DB00F17A0B /* Movie.swift */; };
-		9FA7AB412A77B98900F17A0B /* Exteison + CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB402A77B98900F17A0B /* Exteison + CollectionViewController.swift */; };
 		9FA7AB432A780DCC00F17A0B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB422A780DCC00F17A0B /* DetailViewController.swift */; };
 		9FA7AB452A7812E300F17A0B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB442A7812E300F17A0B /* SearchViewController.swift */; };
 		9FA7AB4D2A7A5A0C00F17A0B /* SearchGlassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB4C2A7A5A0C00F17A0B /* SearchGlassViewController.swift */; };
@@ -36,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F4A696B2AA5FBC800D8ED20 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		9F7B1C6B2A7C10FD000E0F60 /* overviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = overviewTableViewCell.swift; sourceTree = "<group>"; };
 		9F7FC1E12A83F4B800C99092 /* Assignment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Assignment.storyboard; sourceTree = "<group>"; };
 		9F7FC1E32A83F4D500C99092 /* BookWormAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWormAssignmentViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +57,6 @@
 		9FA7AB3A2A77AE3100F17A0B /* BookwormCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookwormCollectionViewCell.swift; sourceTree = "<group>"; };
 		9FA7AB3B2A77AE3100F17A0B /* BookwormCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookwormCollectionViewCell.xib; sourceTree = "<group>"; };
 		9FA7AB3E2A77B0DB00F17A0B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		9FA7AB402A77B98900F17A0B /* Exteison + CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exteison + CollectionViewController.swift"; sourceTree = "<group>"; };
 		9FA7AB422A780DCC00F17A0B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9FA7AB442A7812E300F17A0B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9FA7AB4C2A7A5A0C00F17A0B /* SearchGlassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGlassViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,8 @@
 			files = (
 				9F7FC1ED2A83F53500C99092 /* Kingfisher in Frameworks */,
 				9F7FC1EA2A83F52C00C99092 /* SwiftyJSON in Frameworks */,
+				9F4A696F2AA5FC1200D8ED20 /* Realm in Frameworks */,
+				9F4A69712AA5FC1200D8ED20 /* RealmSwift in Frameworks */,
 				9F7FC1E72A83F52200C99092 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +81,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F4A696A2AA5FBAA00D8ED20 /* Assignment */ = {
+			isa = PBXGroup;
+			children = (
+				9F7FC1E12A83F4B800C99092 /* Assignment.storyboard */,
+				9F4A696B2AA5FBC800D8ED20 /* RealmModel.swift */,
+				9F7FC1E32A83F4D500C99092 /* BookWormAssignmentViewController.swift */,
+				9F7FC1F62A84030E00C99092 /* BookWormAssignmentTableViewCell.swift */,
+			);
+			path = Assignment;
+			sourceTree = "<group>";
+		};
 		9FA7AB162A77AC8F00F17A0B = {
 			isa = PBXGroup;
 			children = (
@@ -98,15 +113,13 @@
 			children = (
 				9FA7AB222A77AC8F00F17A0B /* AppDelegate.swift */,
 				9FA7AB242A77AC8F00F17A0B /* SceneDelegate.swift */,
-				9FA7AB282A77AC8F00F17A0B /* Main.storyboard */,
-				9F7FC1E12A83F4B800C99092 /* Assignment.storyboard */,
-				9F7FC1E32A83F4D500C99092 /* BookWormAssignmentViewController.swift */,
-				9F7FC1F62A84030E00C99092 /* BookWormAssignmentTableViewCell.swift */,
 				9F7FC1F42A83F8A200C99092 /* APIKey.swift */,
 				9F7FC1F22A83F86F00C99092 /* .gitignore */,
+				9F4A696A2AA5FBAA00D8ED20 /* Assignment */,
+				9FA7AB282A77AC8F00F17A0B /* Main.storyboard */,
+				9FA7AB362A77AD8A00F17A0B /* BookwormCollectionViewController.swift */,
 				9FA7AB3A2A77AE3100F17A0B /* BookwormCollectionViewCell.swift */,
 				9FA7AB3B2A77AE3100F17A0B /* BookwormCollectionViewCell.xib */,
-				9FA7AB362A77AD8A00F17A0B /* BookwormCollectionViewController.swift */,
 				9F7B1C6B2A7C10FD000E0F60 /* overviewTableViewCell.swift */,
 				9FA7AB4E2A7A5A5A00F17A0B /* RecentlyViewCollectionViewCell.swift */,
 				9FA7AB502A7A5A7100F17A0B /* PopularMovieTableViewCell.swift */,
@@ -114,7 +127,6 @@
 				9FA7AB4C2A7A5A0C00F17A0B /* SearchGlassViewController.swift */,
 				9FA7AB422A780DCC00F17A0B /* DetailViewController.swift */,
 				9FA7AB442A7812E300F17A0B /* SearchViewController.swift */,
-				9FA7AB402A77B98900F17A0B /* Exteison + CollectionViewController.swift */,
 				9FA7AB382A77ADF400F17A0B /* MovieInfo.swift */,
 				9FA7AB3E2A77B0DB00F17A0B /* Movie.swift */,
 				9FA7AB2B2A77AC9200F17A0B /* Assets.xcassets */,
@@ -144,6 +156,8 @@
 				9F7FC1E62A83F52200C99092 /* Alamofire */,
 				9F7FC1E92A83F52C00C99092 /* SwiftyJSON */,
 				9F7FC1EC2A83F53500C99092 /* Kingfisher */,
+				9F4A696E2AA5FC1200D8ED20 /* Realm */,
+				9F4A69702AA5FC1200D8ED20 /* RealmSwift */,
 			);
 			productName = Bookworm;
 			productReference = 9FA7AB1F2A77AC8F00F17A0B /* Bookworm.app */;
@@ -177,6 +191,7 @@
 				9F7FC1E52A83F52200C99092 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9F7FC1E82A83F52C00C99092 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				9F7FC1EB2A83F53500C99092 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				9F4A696D2AA5FC1200D8ED20 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 9FA7AB202A77AC8F00F17A0B /* Products */;
 			projectDirPath = "";
@@ -214,7 +229,6 @@
 				9FA7AB432A780DCC00F17A0B /* DetailViewController.swift in Sources */,
 				9FA7AB3F2A77B0DB00F17A0B /* Movie.swift in Sources */,
 				9F7FC1F52A83F8A200C99092 /* APIKey.swift in Sources */,
-				9FA7AB412A77B98900F17A0B /* Exteison + CollectionViewController.swift in Sources */,
 				9FA7AB372A77AD8A00F17A0B /* BookwormCollectionViewController.swift in Sources */,
 				9F7B1C6C2A7C10FD000E0F60 /* overviewTableViewCell.swift in Sources */,
 				9FA7AB4D2A7A5A0C00F17A0B /* SearchGlassViewController.swift in Sources */,
@@ -223,6 +237,7 @@
 				9FA7AB232A77AC8F00F17A0B /* AppDelegate.swift in Sources */,
 				9F7FC1F72A84030E00C99092 /* BookWormAssignmentTableViewCell.swift in Sources */,
 				9FA7AB252A77AC8F00F17A0B /* SceneDelegate.swift in Sources */,
+				9F4A696C2AA5FBC800D8ED20 /* RealmModel.swift in Sources */,
 				9FA7AB4F2A7A5A5A00F17A0B /* RecentlyViewCollectionViewCell.swift in Sources */,
 				9F7FC1E42A83F4D500C99092 /* BookWormAssignmentViewController.swift in Sources */,
 			);
@@ -385,7 +400,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.Bookworm2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.Bookworm90;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -417,7 +432,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.Bookworm2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.Bookworm90;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -452,6 +467,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9F4A696D2AA5FC1200D8ED20 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.42.1;
+			};
+		};
 		9F7FC1E52A83F52200C99092 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -479,6 +502,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9F4A696E2AA5FC1200D8ED20 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F4A696D2AA5FC1200D8ED20 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		9F4A69702AA5FC1200D8ED20 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F4A696D2AA5FC1200D8ED20 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		9F7FC1E62A83F52200C99092 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9F7FC1E52A83F52200C99092 /* XCRemoteSwiftPackageReference "Alamofire" */;

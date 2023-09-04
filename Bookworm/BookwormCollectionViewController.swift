@@ -6,8 +6,8 @@
 //
 
 import UIKit
-
-
+import RealmSwift
+import Kingfisher
 
 class BookwormCollectionViewController: UICollectionViewController {
     
@@ -21,7 +21,7 @@ class BookwormCollectionViewController: UICollectionViewController {
     
     var list: [Movie] = []
 
-    
+    var tasks: Results<BookWormTable>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,20 @@ class BookwormCollectionViewController: UICollectionViewController {
         searchBar.placeholder = "검색어를 입력해주세요."
         navigationItem.titleView = searchBar
         searchBar.showsCancelButton = true
+        
+        
+        let realm = try! Realm()
+        tasks = realm.objects(BookWormTable.self)
+        print(tasks)
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
     }
     
     func SetCollectionViewlayOut() {
@@ -50,12 +64,22 @@ class BookwormCollectionViewController: UICollectionViewController {
         
     }
     
+    func randomBackgroundColor() -> UIColor {
+        
+        let red = CGFloat.random(in: 0...1)
+        let green = CGFloat.random(in: 0...1)
+        let blue = CGFloat.random(in: 0...1)
+        
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: 1)
+    }
+    
     @IBAction func searchButtonClicked(_ sender: UIBarButtonItem) {
         
         //스토리 보드 선택
-        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let sb = UIStoryboard(name: "Assignment", bundle: nil)
         //뷰컨트롤러 선택
-        let vc = sb.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let vc = sb.instantiateViewController(withIdentifier: "BookWormAssignmentViewController") as! BookWormAssignmentViewController
         
         let nav = UINavigationController(rootViewController: vc)
         
@@ -72,7 +96,9 @@ class BookwormCollectionViewController: UICollectionViewController {
     // 셀 갯수
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return movieList.movie.count
-        return list.count
+        //return list.count
+        guard let tasks else { return 0 }
+        return tasks.count
     }
     
     //셀 디자인
@@ -88,9 +114,26 @@ class BookwormCollectionViewController: UICollectionViewController {
 //        cell.movieBackView.layer.cornerRadius = 15 // 두 코드의 차이점에 대해 생각해보자..!
         
         
-        let row = movieList.movie[indexPath.row]
-        cell.configureCell(row: list[indexPath.row])
+//        let row = movieList.movie[indexPath.row]
+//        cell.configureCell(row: list[indexPath.row])
         
+        guard let tasks else { return UICollectionViewCell() }
+        
+        let row = tasks[indexPath.row]
+        
+        cell.movieBackView.backgroundColor = randomBackgroundColor()
+        cell.moviePosterImage.kf.setImage(with: URL(string: row.image))
+        cell.movieTitleLabel.text = row.title
+        cell.movieTitleLabel.numberOfLines = 0
+        cell.movieRatings.text = "\(row.price)원"
+        cell.movieBackView.layer.cornerRadius = 15
+        
+        //like값 변화에 따른 UI변화 구현 X,  Transiaction..
+        if row.like {
+            cell.movieLikeButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            cell.movieLikeButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
 
         
         cell.movieLikeButton.tag = indexPath.row
@@ -104,7 +147,9 @@ class BookwormCollectionViewController: UICollectionViewController {
     @objc
     func likeButtonTapped(_ sender: UIButton) {
         print("clicked \(sender.tag)")
-        movieList.movie[sender.tag].like.toggle()
+//        movieList.movie[sender.tag].like.toggle()
+        guard let tasks else { return }
+        tasks[sender.tag].like.toggle()
         collectionView.reloadData()
     }
     
@@ -119,7 +164,11 @@ class BookwormCollectionViewController: UICollectionViewController {
 //        let row = movieList.movie[indexPath.row]
         
 //        vc.data = row
-        vc.data = list[indexPath.row]
+//        vc.data = list[indexPath.row]
+        
+        //셀 선택 시 realm으로 read한 데이터를 기반으로 디테일 뷰 구현하기..!
+        guard let tasks else { return }
+        vc.realmData = tasks[indexPath.row]
         vc.type = .push
         
         
@@ -163,16 +212,16 @@ extension BookwormCollectionViewController: UISearchBarDelegate {
     
     }
     //실시간 검색
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        for item in movieList.movie {
-            if item.title.contains(searchBar.text!) {
-                list.append(item)
-//                print(list)
-            }
-        }
-        
-        collectionView.reloadData()
-    
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        for item in movieList.movie {
+//            if item.title.contains(searchBar.text!) {
+//                list.append(item)
+////                print(list)
+//            }
+//        }
+//
+//        collectionView.reloadData()
+//
+//    }
     
 }

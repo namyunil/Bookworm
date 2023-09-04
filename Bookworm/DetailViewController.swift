@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
     //1. 값 담을 공간
     
     var data: Movie?
-    
+    var realmData: BookWormTable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
