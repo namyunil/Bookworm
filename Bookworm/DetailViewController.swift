@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 enum TransitionType {
     case push
@@ -27,6 +28,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var contentTextView: UITextView!
     
+    @IBOutlet var memoTextField: UITextField!
     
     let placeholderText = "내용을 입력해주세요"
     
@@ -39,7 +41,9 @@ class DetailViewController: UIViewController {
     
     //1. 값 담을 공간
     
-    var data: Movie?
+//    var data: Movie?
+    let realm = try! Realm()
+    
     var realmData: BookWormTable?
     
     override func viewDidLoad() {
@@ -54,13 +58,49 @@ class DetailViewController: UIViewController {
         contentTextView.textColor = .lightGray
         
         
-        guard let data else { return }
+//        guard let data else { return }
+        guard let realmData else { return }
         
-    
-        titleLabel.text = data.title
-        posterImageView.image = UIImage(named: data.title)
+        titleLabel.text = realmData.title
+        posterImageView.image = loadImageFromDocument(fileName: "jack_\(realmData._id).jpg")
+        movieInformationLabel.text = "\(realmData.author) | \(realmData.publisher) | \(realmData.price)"
         
-        movieInformationLabel.text = "\(data.releaseDate) | \(data.runtime)분 | \(data.rate)점"
+      
+
+        // update 구문 추가 구현 필요..!
+        let idOfBookWormToUpdate = realmData._id
+
+        // Find the person to update by ID
+        guard let bookWorm = realm.object(ofType: BookWormTable.self, forPrimaryKey: idOfBookWormToUpdate) else {
+            print("Person \(idOfBookWormToUpdate) not found")
+            return
+        }
+
+        do {
+            try realm.write {
+                // Update the embedded object directly through the person
+                // If the embedded object is null, updating these properties has no effect
+                if let text = memoTextField.text {
+                    bookWorm.title = text
+                    
+                }
+            }
+        } catch {
+                print(error)
+            }
+        
+
+ 
+
+
+        
+//
+//        titleLabel.text = data.title
+//        posterImageView.image = UIImage(named: data.title)
+//
+//        movieInformationLabel.text = "\(data.releaseDate) | \(data.runtime)분 | \(data.rate)점"
+//
+        
         
         //        if push == false {
         //            let xMark = UIImage(systemName: "xmark")
@@ -111,14 +151,27 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "overviewTableViewCell") as! overviewTableViewCell
         
-        if let data {
-            cell.overviewLabel.text = data.overview
-        }
+//        if let data {
+//            cell.overviewLabel.text = data.overview
+//        }
         
+        guard let realmData else { return UITableViewCell() }
+        cell.overviewLabel.text = realmData.content
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let data = realmData else { return }
+
+        removeImageFromDocument(fileName: "jack_\(data._id).jpg") // 순서를 고려해야한다..!
+
+        //추가하거나 삭제할때는 try구문 활용하여야한다..!
+        try! realm.write {
+            realm.delete(data)
+        }
+        tableView.reloadData()
+    }
 }
 
 

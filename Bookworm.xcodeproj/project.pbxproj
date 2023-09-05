@@ -35,6 +35,7 @@
 		9FA7AB4F2A7A5A5A00F17A0B /* RecentlyViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB4E2A7A5A5A00F17A0B /* RecentlyViewCollectionViewCell.swift */; };
 		9FA7AB522A7A5A7100F17A0B /* PopularMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7AB502A7A5A7100F17A0B /* PopularMovieTableViewCell.swift */; };
 		9FA7AB532A7A5A7100F17A0B /* PopularMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA7AB512A7A5A7100F17A0B /* PopularMovieTableViewCell.xib */; };
+		9FD8505C2AA796E30040930F /* FileManager + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD8505B2AA796E30040930F /* FileManager + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		9FA7AB4E2A7A5A5A00F17A0B /* RecentlyViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		9FA7AB502A7A5A7100F17A0B /* PopularMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieTableViewCell.swift; sourceTree = "<group>"; };
 		9FA7AB512A7A5A7100F17A0B /* PopularMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularMovieTableViewCell.xib; sourceTree = "<group>"; };
+		9FD8505B2AA796E30040930F /* FileManager + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				9F4A696B2AA5FBC800D8ED20 /* RealmModel.swift */,
 				9F7FC1E32A83F4D500C99092 /* BookWormAssignmentViewController.swift */,
 				9F7FC1F62A84030E00C99092 /* BookWormAssignmentTableViewCell.swift */,
+				9FD8505B2AA796E30040930F /* FileManager + Extension.swift */,
 			);
 			path = Assignment;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				9FA7AB3F2A77B0DB00F17A0B /* Movie.swift in Sources */,
 				9F7FC1F52A83F8A200C99092 /* APIKey.swift in Sources */,
 				9FA7AB372A77AD8A00F17A0B /* BookwormCollectionViewController.swift in Sources */,
+				9FD8505C2AA796E30040930F /* FileManager + Extension.swift in Sources */,
 				9F7B1C6C2A7C10FD000E0F60 /* overviewTableViewCell.swift in Sources */,
 				9FA7AB4D2A7A5A0C00F17A0B /* SearchGlassViewController.swift in Sources */,
 				9FA7AB392A77ADF400F17A0B /* MovieInfo.swift in Sources */,

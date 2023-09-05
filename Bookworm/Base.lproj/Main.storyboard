@@ -132,7 +132,7 @@
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3fE-fq-KGo">
-                                <rect key="frame" x="184" y="79" width="97" height="34"/>
+                                <rect key="frame" x="242" y="79" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -157,6 +157,7 @@
                     </view>
                     <connections>
                         <outlet property="contentTextView" destination="rvx-yt-dvN" id="5yf-DS-xd3"/>
+                        <outlet property="memoTextField" destination="3fE-fq-KGo" id="l2b-WE-4D1"/>
                         <outlet property="movieInformationLabel" destination="JXe-Q0-BgY" id="y3O-XR-hBz"/>
                         <outlet property="overviewTableView" destination="Bba-57-3LP" id="hdH-pG-065"/>
                         <outlet property="posterImageView" destination="KXb-ts-hKF" id="Fb6-tm-8ll"/>

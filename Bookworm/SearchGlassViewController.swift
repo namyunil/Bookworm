@@ -191,7 +191,7 @@ extension SearchGlassViewController: UITableViewDelegate, UITableViewDataSource 
         present(nav, animated: true)
         
         //데이터 넘겨야함..!
-        vc.data = movieList.movie[indexPath.row]
+//        vc.data = movieList.movie[indexPath.row]
         vc.type = .present
     }
     
@@ -230,7 +230,7 @@ extension SearchGlassViewController: UICollectionViewDelegate, UICollectionViewD
         
         present(nav, animated:  true)
 
-        vc.data = movieList.movie[indexPath.item]
+//        vc.data = movieList.movie[indexPath.item]
         vc.type = .present
     }
     

@@ -20,7 +20,6 @@ struct Book {
     let image: String
     let date: String
     let price: Int
-    
     let format = {
         let format = DateFormatter()
         format.dateFormat = "yy년 MM월 dd일"
@@ -171,13 +170,30 @@ extension BookWormAssignmentViewController: UITableViewDelegate, UITableViewData
         let row = bookList[indexPath.row]
         
         let realm = try! Realm()
-        
-        let task = BookWormTable(author: row.authors[0], title: row.title, publisher: row.publisher, price: row.price, image: row.image)
+         
+        let task = BookWormTable(author: row.authors[0], title: row.title, publisher: row.publisher, price: row.price, image: row.image, content: row.content)
         
         try! realm.write {
             realm.add(task)
             print("Realm Add Succeed")
         }
+        
+        let value = URL(string: row.image)
+        var image: UIImage?
+        
+        
+            if let url = value, let data = try? Data(contentsOf: url ) {
+                image = UIImage(data: data)
+        
+            
+                if let image {
+                    self.saveImageToDocument(fileName: "jack_\(task._id).jpg", image: image)
+                }
+        }
+        
+            
+            
+        
         
         dismiss(animated: true)
         

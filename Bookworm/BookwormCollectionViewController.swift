@@ -36,11 +36,12 @@ class BookwormCollectionViewController: UICollectionViewController {
         navigationItem.titleView = searchBar
         searchBar.showsCancelButton = true
         
-        
+         
         let realm = try! Realm()
         tasks = realm.objects(BookWormTable.self)
-        print(tasks)
         
+        print(tasks)
+        print(realm.configuration.fileURL)
         
         
     }
@@ -122,11 +123,24 @@ class BookwormCollectionViewController: UICollectionViewController {
         let row = tasks[indexPath.row]
         
         cell.movieBackView.backgroundColor = randomBackgroundColor()
-        cell.moviePosterImage.kf.setImage(with: URL(string: row.image))
+//        cell.moviePosterImage.kf.setImage(with: URL(string: row.image))
         cell.movieTitleLabel.text = row.title
         cell.movieTitleLabel.numberOfLines = 0
-        cell.movieRatings.text = "\(row.price)원"
+        cell.movieRatings.text = "\(row.memo)"
         cell.movieBackView.layer.cornerRadius = 15
+        
+//        let value = URL(string: row.image)
+//
+//        DispatchQueue.global().async {
+//            if let url = value, let data = try? Data(contentsOf: url ) {
+//
+//                DispatchQueue.main.async {
+//                    cell.moviePosterImage.image = UIImage(data: data)
+//                }
+//            }
+//        }
+        
+        cell.moviePosterImage.image = loadImageFromDocument(fileName: "jack_\(row._id).jpg")
         
         //like값 변화에 따른 UI변화 구현 X,  Transiaction..
         if row.like {

@@ -17,8 +17,10 @@ class BookWormTable: Object {
     @Persisted var price: Int
     @Persisted var image: String
     @Persisted var like: Bool
+    @Persisted var content: String
+    @Persisted var memo: String
     
-    convenience init(author: String, title: String, publisher: String, price: Int, image: String) {
+    convenience init(author: String, title: String, publisher: String, price: Int, image: String, content: String) {
         self.init()
         
         self.author = author
@@ -26,6 +28,7 @@ class BookWormTable: Object {
         self.publisher = publisher
         self.price = price
         self.image = image
+        self.content = content
         self.like = false
     }
     
