@@ -171,7 +171,7 @@ extension BookWormAssignmentViewController: UITableViewDelegate, UITableViewData
         
         let realm = try! Realm()
          
-        let task = BookWormTable(author: row.authors[0], title: row.title, publisher: row.publisher, price: row.price, image: row.image, content: row.content)
+        let task = BookWormTable(author: row.authors[0], title: row.title, publisher: row.publisher, price: row.price, image: row.image, content: row.content, memo: row.publisher)
         
         try! realm.write {
             realm.add(task)
@@ -181,16 +181,21 @@ extension BookWormAssignmentViewController: UITableViewDelegate, UITableViewData
         let value = URL(string: row.image)
         var image: UIImage?
         
-        
+        //GCD 관련 개념 다시 찾아보자..!
+        //썸네일이 바로 화면에 반영되지 않고 디테일 화면 갔다와야 이미지 반영 되는 상황
+        DispatchQueue.global().async {
+            print("==global==")
             if let url = value, let data = try? Data(contentsOf: url ) {
                 image = UIImage(data: data)
-        
-            
-                if let image {
-                    self.saveImageToDocument(fileName: "jack_\(task._id).jpg", image: image)
+                
+                DispatchQueue.main.async {
+                    if let image {
+                        print("==main==")
+                        self.saveImageToDocument(fileName: "jack_\(task._id).jpg", image: image)
+                    }
                 }
+            }
         }
-        
             
             
         

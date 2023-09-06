@@ -48,7 +48,13 @@ class BookwormCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print(#function)
+//        collectionView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(#function)
         collectionView.reloadData()
     }
     
@@ -139,8 +145,9 @@ class BookwormCollectionViewController: UICollectionViewController {
 //                }
 //            }
 //        }
+        print("==main2==")
+            cell.moviePosterImage.image = self.loadImageFromDocument(fileName: "jack_\(row._id).jpg")
         
-        cell.moviePosterImage.image = loadImageFromDocument(fileName: "jack_\(row._id).jpg")
         
         //like값 변화에 따른 UI변화 구현 X,  Transiaction..
         if row.like {

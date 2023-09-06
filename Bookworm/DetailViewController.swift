@@ -42,6 +42,7 @@ class DetailViewController: UIViewController {
     //1. 값 담을 공간
     
 //    var data: Movie?
+    
     let realm = try! Realm()
     
     var realmData: BookWormTable?
@@ -67,27 +68,9 @@ class DetailViewController: UIViewController {
         
       
 
-        // update 구문 추가 구현 필요..!
-        let idOfBookWormToUpdate = realmData._id
 
-        // Find the person to update by ID
-        guard let bookWorm = realm.object(ofType: BookWormTable.self, forPrimaryKey: idOfBookWormToUpdate) else {
-            print("Person \(idOfBookWormToUpdate) not found")
-            return
-        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editButtonClicked))
 
-        do {
-            try realm.write {
-                // Update the embedded object directly through the person
-                // If the embedded object is null, updating these properties has no effect
-                if let text = memoTextField.text {
-                    bookWorm.title = text
-                    
-                }
-            }
-        } catch {
-                print(error)
-            }
         
 
  
@@ -129,6 +112,23 @@ class DetailViewController: UIViewController {
         
     }
     
+    @objc func editButtonClicked() {
+
+        guard let data = realmData else { return }
+            do {
+                try realm.write {
+
+                    guard let text = memoTextField.text else { return }
+                    realm.create(BookWormTable.self, value: ["_id": data._id, "memo": text], update: .modified)
+
+                }
+            } catch {
+                print(error)
+            }
+
+        navigationController?.popViewController(animated: true)
+        }
+
     @objc // 빌드 시 objc로 알아서 변환해준다..!
     func closeButtonClicked() {
         
@@ -151,9 +151,9 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "overviewTableViewCell") as! overviewTableViewCell
         
-//        if let data {
-//            cell.overviewLabel.text = data.overview
-//        }
+//                if let data {
+//                    cell.overviewLabel.text = data.overview
+//                }
         
         guard let realmData else { return UITableViewCell() }
         cell.overviewLabel.text = realmData.content
@@ -163,17 +163,25 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let data = realmData else { return }
-
+        
         removeImageFromDocument(fileName: "jack_\(data._id).jpg") // 순서를 고려해야한다..!
-
+        
         //추가하거나 삭제할때는 try구문 활용하여야한다..!
-        try! realm.write {
-            realm.delete(data)
+        
+        
+        do {
+            try realm.write {
+                realm.delete(data)
+            }
+        } catch {
+            print(error)
         }
-        tableView.reloadData()
+        
+        navigationController?.popViewController(animated: true)
+        
     }
+    
 }
-
 
 extension DetailViewController: UITextViewDelegate {
     
