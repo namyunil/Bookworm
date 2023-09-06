@@ -67,6 +67,8 @@ class BookWormAssignmentViewController: UIViewController {
     var bookList: [Book] = []
     var page = 1
     
+    let repository = BookWormRepository()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -173,10 +175,12 @@ extension BookWormAssignmentViewController: UITableViewDelegate, UITableViewData
          
         let task = BookWormTable(author: row.authors[0], title: row.title, publisher: row.publisher, price: row.price, image: row.image, content: row.content, memo: row.publisher)
         
-        try! realm.write {
-            realm.add(task)
-            print("Realm Add Succeed")
-        }
+//        try! realm.write {
+//            realm.add(task)
+//            print("Realm Add Succeed")
+//        }
+        
+        repository.createItem(task)
         
         let value = URL(string: row.image)
         var image: UIImage?

@@ -10,6 +10,7 @@
 		9F4A696C2AA5FBC800D8ED20 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A696B2AA5FBC800D8ED20 /* RealmModel.swift */; };
 		9F4A696F2AA5FC1200D8ED20 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9F4A696E2AA5FC1200D8ED20 /* Realm */; };
 		9F4A69712AA5FC1200D8ED20 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9F4A69702AA5FC1200D8ED20 /* RealmSwift */; };
+		9F782B1A2AA8E756001D2E25 /* BookWormRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F782B192AA8E756001D2E25 /* BookWormRepository.swift */; };
 		9F7B1C6C2A7C10FD000E0F60 /* overviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B1C6B2A7C10FD000E0F60 /* overviewTableViewCell.swift */; };
 		9F7FC1E22A83F4B800C99092 /* Assignment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F7FC1E12A83F4B800C99092 /* Assignment.storyboard */; };
 		9F7FC1E42A83F4D500C99092 /* BookWormAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7FC1E32A83F4D500C99092 /* BookWormAssignmentViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		9F4A696B2AA5FBC800D8ED20 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		9F782B192AA8E756001D2E25 /* BookWormRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWormRepository.swift; sourceTree = "<group>"; };
 		9F7B1C6B2A7C10FD000E0F60 /* overviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = overviewTableViewCell.swift; sourceTree = "<group>"; };
 		9F7FC1E12A83F4B800C99092 /* Assignment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Assignment.storyboard; sourceTree = "<group>"; };
 		9F7FC1E32A83F4D500C99092 /* BookWormAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWormAssignmentViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				9F7FC1E32A83F4D500C99092 /* BookWormAssignmentViewController.swift */,
 				9F7FC1F62A84030E00C99092 /* BookWormAssignmentTableViewCell.swift */,
 				9FD8505B2AA796E30040930F /* FileManager + Extension.swift */,
+				9F782B192AA8E756001D2E25 /* BookWormRepository.swift */,
 			);
 			path = Assignment;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				9F7FC1F52A83F8A200C99092 /* APIKey.swift in Sources */,
 				9FA7AB372A77AD8A00F17A0B /* BookwormCollectionViewController.swift in Sources */,
 				9FD8505C2AA796E30040930F /* FileManager + Extension.swift in Sources */,
+				9F782B1A2AA8E756001D2E25 /* BookWormRepository.swift in Sources */,
 				9F7B1C6C2A7C10FD000E0F60 /* overviewTableViewCell.swift in Sources */,
 				9FA7AB4D2A7A5A0C00F17A0B /* SearchGlassViewController.swift in Sources */,
 				9FA7AB392A77ADF400F17A0B /* MovieInfo.swift in Sources */,

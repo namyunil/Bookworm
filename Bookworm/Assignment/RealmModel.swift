@@ -16,9 +16,11 @@ class BookWormTable: Object {
     @Persisted var publisher: String
     @Persisted var price: Int
     @Persisted var image: String
-    @Persisted var like: Bool
+    @Persisted var likeTest: Bool
     @Persisted var content: String
-    @Persisted var memo: String
+    @Persisted var memoTest: String
+//    @Persisted var test: Bool
+    @Persisted var summary: String
     
     convenience init(author: String, title: String, publisher: String, price: Int, image: String, content: String, memo: String) {
         self.init()
@@ -29,8 +31,10 @@ class BookWormTable: Object {
         self.price = price
         self.image = image
         self.content = content
-        self.like = false
-        self.memo = memo
+        self.likeTest = false
+        self.memoTest = memo
+//        self.test = false
+        self.summary = "저자는 '\(author)'이고, 제목은 '\(title)'입니다."
     }
     
     

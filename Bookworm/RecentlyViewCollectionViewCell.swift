@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecentlyViewCollectionViewCell: UICollectionViewCell {
+final class RecentlyViewCollectionViewCell: UICollectionViewCell {
     
     
     

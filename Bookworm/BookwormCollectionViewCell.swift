@@ -8,7 +8,7 @@
 import UIKit
 
 
-class BookwormCollectionViewCell: UICollectionViewCell {
+final class BookwormCollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet var movieBackView: UIView!

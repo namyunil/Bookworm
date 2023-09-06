@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookWormAssignmentTableViewCell: UITableViewCell {
+final class BookWormAssignmentTableViewCell: UITableViewCell {
 
     @IBOutlet var contentLabel: UILabel!
     @IBOutlet var infoLabel: UILabel!

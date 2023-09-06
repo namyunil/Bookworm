@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PopularMovieTableViewCell: UITableViewCell {
+final class PopularMovieTableViewCell: UITableViewCell {
 
     
     @IBOutlet var moviePosterImageView: UIImageView!

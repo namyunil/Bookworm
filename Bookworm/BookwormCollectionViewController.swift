@@ -23,6 +23,8 @@ class BookwormCollectionViewController: UICollectionViewController {
 
     var tasks: Results<BookWormTable>?
     
+    let repository = BookWormRepository()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,11 +39,12 @@ class BookwormCollectionViewController: UICollectionViewController {
         searchBar.showsCancelButton = true
         
          
-        let realm = try! Realm()
-        tasks = realm.objects(BookWormTable.self)
-        
+//        let realm = try! Realm()
+//        tasks = realm.objects(BookWormTable.self)
+        tasks = repository.fetch()
+        repository.checkSchemaVersion()
         print(tasks)
-        print(realm.configuration.fileURL)
+//        print(realm.configuration.fileURL)
         
         
     }
@@ -132,7 +135,7 @@ class BookwormCollectionViewController: UICollectionViewController {
 //        cell.moviePosterImage.kf.setImage(with: URL(string: row.image))
         cell.movieTitleLabel.text = row.title
         cell.movieTitleLabel.numberOfLines = 0
-        cell.movieRatings.text = "\(row.memo)"
+        cell.movieRatings.text = "\(row.memoTest)"
         cell.movieBackView.layer.cornerRadius = 15
         
 //        let value = URL(string: row.image)
@@ -150,7 +153,7 @@ class BookwormCollectionViewController: UICollectionViewController {
         
         
         //like값 변화에 따른 UI변화 구현 X,  Transiaction..
-        if row.like {
+        if row.likeTest {
             cell.movieLikeButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         } else {
             cell.movieLikeButton.setImage(UIImage(systemName: "star"), for: .normal)
@@ -170,7 +173,7 @@ class BookwormCollectionViewController: UICollectionViewController {
         print("clicked \(sender.tag)")
 //        movieList.movie[sender.tag].like.toggle()
         guard let tasks else { return }
-        tasks[sender.tag].like.toggle()
+        tasks[sender.tag].likeTest.toggle()
         collectionView.reloadData()
     }
     

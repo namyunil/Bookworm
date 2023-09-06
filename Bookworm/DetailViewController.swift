@@ -47,6 +47,8 @@ class DetailViewController: UIViewController {
     
     var realmData: BookWormTable?
     
+    let repository = BookWormRepository()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,16 +117,18 @@ class DetailViewController: UIViewController {
     @objc func editButtonClicked() {
 
         guard let data = realmData else { return }
-            do {
-                try realm.write {
-
-                    guard let text = memoTextField.text else { return }
-                    realm.create(BookWormTable.self, value: ["_id": data._id, "memo": text], update: .modified)
-
-                }
-            } catch {
-                print(error)
-            }
+//            do {
+//                try realm.write {
+//
+//                    guard let text = memoTextField.text else { return }
+//                    realm.create(BookWormTable.self, value: ["_id": data._id, "memo": text], update: .modified)
+//
+//                }
+//            } catch {
+//                print(error)
+//            }
+        guard let text = memoTextField.text else { return }
+        repository.editItem(id: data._id, text: text)
 
         navigationController?.popViewController(animated: true)
         }
