@@ -11,7 +11,7 @@ import RealmSwift
 protocol BookWormRepositoryType: AnyObject {
     func fetch() -> Results<BookWormTable>
     func createItem(_ item: BookWormTable)
-    func editItem(id: ObjectId, text: String)
+    func editItem(id: ObjectId, likeTest: Bool)
 }
 
 class BookWormRepository: BookWormRepositoryType {
@@ -45,11 +45,11 @@ class BookWormRepository: BookWormRepositoryType {
     
     
     
-    func editItem(id: ObjectId, text: String) {
+    func editItem(id: ObjectId, likeTest: Bool) {
         do {
             try realm.write {
-                realm.create(BookWormTable.self, value: ["_id": ObjectId.self, "memo": text], update: .modified)
                 //단순 추가가 아닌 수정하는 것이라 명시..!
+                realm.create(BookWormTable.self, value: ["_id": id.self, "likeTest": likeTest], update: .modified)
             }
             
         } catch {

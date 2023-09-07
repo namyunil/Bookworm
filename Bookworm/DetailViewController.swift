@@ -127,8 +127,8 @@ class DetailViewController: UIViewController {
 //            } catch {
 //                print(error)
 //            }
-        guard let text = memoTextField.text else { return }
-        repository.editItem(id: data._id, text: text)
+//        guard let text = memoTextField.text else { return }
+//        repository.editItem(id: data._id, text: text)
 
         navigationController?.popViewController(animated: true)
         }

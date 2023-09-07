@@ -21,7 +21,7 @@ class BookwormCollectionViewController: UICollectionViewController {
     
     var list: [Movie] = []
 
-    var tasks: Results<BookWormTable>?
+     var tasks: Results<BookWormTable>?
     
     let repository = BookWormRepository()
     
@@ -44,7 +44,7 @@ class BookwormCollectionViewController: UICollectionViewController {
         tasks = repository.fetch()
         repository.checkSchemaVersion()
         print(tasks)
-//        print(realm.configuration.fileURL)
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         
     }
@@ -158,7 +158,6 @@ class BookwormCollectionViewController: UICollectionViewController {
         } else {
             cell.movieLikeButton.setImage(UIImage(systemName: "star"), for: .normal)
         }
-
         
         cell.movieLikeButton.tag = indexPath.row
         cell.movieLikeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
@@ -173,9 +172,19 @@ class BookwormCollectionViewController: UICollectionViewController {
         print("clicked \(sender.tag)")
 //        movieList.movie[sender.tag].like.toggle()
         guard let tasks else { return }
-        tasks[sender.tag].likeTest.toggle()
+        
+       
+        
+        if tasks[sender.tag].likeTest {
+            repository.editItem(id: tasks[sender.tag]._id, likeTest: false)
+        } else {
+            repository.editItem(id: tasks[sender.tag]._id, likeTest: true)
+        }
+        //edit 활용해서 값을 변경 후 반영되도록 해보자..!
         collectionView.reloadData()
     }
+    
+    // 'RealmSwiftObjectId' of type 'RealmSwiftObjectId' for 'object id' property 'BookWormTable._id'.'
     
     //셀 선택
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
